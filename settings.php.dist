@@ -1,0 +1,21 @@
+<?php
+
+return [
+	'settings' => [
+		'debug' => false,
+		'displayErrorDetails' => true,
+		'doctrine' => [
+			// if true, metadata caching is forcefully disabled
+			'dev_mode' => true,
+
+			// path where the compiled metadata info will be cached
+			// make sure the path exists and it is writable
+			'cache_dir' => APP_ROOT . '/var/doctrine',
+
+			'connection' => [
+				'driver' => 'pdo_sqlite',
+				'path' => APP_ROOT . '/var/co2.db.sqlite',
+			],
+		],
+	]
+];

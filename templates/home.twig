@@ -1,0 +1,12 @@
+{% extends "main.twig" %}
+
+{% block content_title %}<h4>CO2</h4>{% endblock %}
+
+{% block content %}
+  <canvas id="myChart" width="400" height="400"></canvas>
+  <script>co2chart(
+    document.getElementById('myChart').getContext('2d'),
+    {"a":11, "b":12}
+    )
+  </script>
+{% endblock %}

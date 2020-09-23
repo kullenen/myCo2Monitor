@@ -1,0 +1,28 @@
+{
+    "name": "kullenen/co2",
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://asset-packagist.org"
+		}
+	],
+    "require": {
+        "slim/slim": "^4.5",
+        "slim/twig-view": "^3.1",
+        "doctrine/orm": "^2.7",
+        "slim/psr7": "^1.2",
+        "php-di/php-di": "^6.2",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "npm-asset/chart.js": "^2.9",
+        "npm-asset/purecss": "^2.0"
+    },
+	"extra": {
+        "installer-types": ["npm-asset"],
+        "installer-paths": {
+            "public/static/assets/{$name}/": ["type:npm-asset"]
+        }
+	},
+    "autoload": {
+        "psr-4": { "" : "src/" }
+    }
+}
