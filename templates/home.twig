@@ -3,10 +3,11 @@
 {% block content_title %}<h4>CO2</h4>{% endblock %}
 
 {% block content %}
-  <canvas id="myChart" width="400" height="400"></canvas>
-  <script>co2chart(
-    document.getElementById('myChart').getContext('2d'),
-    {"a":11, "b":12}
-    )
-  </script>
+  <div class="center-text">
+    <canvas id="co2Chart"></canvas> 
+  </div> 
+  <script> 
+    var co2Chart = createCo2chart("co2Chart"); 
+    co2chartUpdate("data/", co2Chart); 
+  </script> 
 {% endblock %}

@@ -7,5 +7,6 @@ class Routes {
 		$app = $container->get('app');
 
 		$app->get('/', HomeController::class)->setName('home');
+		$app->get('/data[/]', DataController::class)->setName('data');
 	}
 }

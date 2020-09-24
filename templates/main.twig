@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="/static/assets/purecss/build/pure.css"/>
     <link rel="stylesheet" href="/static/css/main.css"/>
 
-    {# <script src="/static/assets/moment/dist/moment.js"></script> #}
+    <script src="/static/assets/moment/moment.js"></script>
     <script src="/static/assets/chart.js/dist/Chart.js"></script>
+    <script src="/static/assets/jquery/dist/jquery.min.js"></script>
     <script src="/static/js/co2.js"></script>
 
     <title>CO2</title>
@@ -37,9 +38,11 @@
 	  {% block content_title %}{% endblock %}
 	</div>
       </div>
-      <div id="content" class="pure-g">
-	<div class="pure-u-1">
-	  {% block content %} {% endblock %}
+      <div class="pure-u-1">
+	<div id="content" class="pure-g">
+	  <div class="pure-u-1">
+	    {% block content %} {% endblock %}
+	  </div>
 	</div>
       </div>
     </div>
