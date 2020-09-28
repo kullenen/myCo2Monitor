@@ -1,6 +1,6 @@
 <?php
 
-namespace Kullenen\Co2\Entities;
+namespace Kullenen\Co2\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 

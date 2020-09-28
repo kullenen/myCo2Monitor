@@ -13,7 +13,7 @@ class Doctrine {
 		$container->set(
 			EntityManager::class,
 			function ($container) {
-				$metadataPath = [APP_ROOT . '/src/Kullenen/Co2/Entities'];
+				$metadataPath = [APP_ROOT . '/src/Kullenen/Co2/Doctrine/Entities'];
 
 				$config = Setup::createAnnotationMetadataConfiguration(
 					$metadataPath,

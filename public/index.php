@@ -9,6 +9,7 @@ use Kullenen\Co2\Controllers\Routes;
 $container = require __DIR__ . '/../bootstrap.php';
 
 DI\App::register($container);
+DI\Middleware::register($container);
 DI\View::register($container);
 DI\Doctrine::register($container);
 

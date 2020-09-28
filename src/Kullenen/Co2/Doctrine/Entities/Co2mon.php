@@ -1,6 +1,6 @@
 <?php
 
-namespace Kullenen\Co2\Entities;
+namespace Kullenen\Co2\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Co2mon
  *
  * @ORM\Table(name="co2mon", uniqueConstraints={@ORM\UniqueConstraint(name="time", columns={"time", "locationId"})}, indexes={@ORM\Index(name="locationId", columns={"locationId"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kullenen\Co2\Doctrine\Repositories\Co2monRepository")
  */
 class Co2mon
 {

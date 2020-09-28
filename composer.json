@@ -15,7 +15,8 @@
         "npm-asset/chart.js": "^2.9",
         "npm-asset/purecss": "^2.0",
         "doctrine/orm": "^2.7",
-        "npm-asset/jquery": "^3.5"
+        "npm-asset/jquery": "^3.5",
+        "middlewares/trailing-slash": "^2.0"
     },
 	"extra": {
         "installer-types": ["npm-asset"],
