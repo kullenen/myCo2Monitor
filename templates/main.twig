@@ -5,10 +5,15 @@
 
     <link rel="stylesheet" href="/static/assets/purecss/build/pure.css"/>
     <link rel="stylesheet" href="/static/css/main.css"/>
+    <link rel="stylesheet" href="/static/assets/jquery-datetimepicker/jquery.datetimepicker.css"/>
 
     <script src="/static/assets/moment/moment.js"></script>
     <script src="/static/assets/chart.js/dist/Chart.js"></script>
     <script src="/static/assets/jquery/dist/jquery.min.js"></script>
+    <script src="/static/assets/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+    <script src="/static/assets/gasparesganga-jquery-loading-overlay/dist/loadingoverlay.min.js"/></script>
+
     <script src="/static/js/co2.js"></script>
 
     <title>CO2</title>
@@ -20,7 +25,7 @@
       </div>
       <div id="menu" class="pure-u-1">
 	<div class="pure-menu pure-menu-horizontal">
-	  <ul class="pure-menu-list">
+	  {# <ul class="pure-menu-list"> #}
 	    {# <li class="pure-menu-item"> #}
 	    {#   <a href="{{ path_for('main') }}" class="pure-menu-link">Запрос</a> #}
 	    {# </li> #}
@@ -30,7 +35,7 @@
 	    {# <li class="pure-menu-item"> #}
 	    {#   <a href="{{ path_for('templates', {}, {'sort':{'c':'id', 'o':'asc'}}) }}" class="pure-menu-link">Шаблоны</a> #}
 	    {# </li> #}
-	  </ul>
+	  {# </ul> #}
 	</div>
       </div>
       <div class="pure-u-1">

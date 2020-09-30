@@ -16,7 +16,9 @@
         "npm-asset/purecss": "^2.0",
         "doctrine/orm": "^2.7",
         "npm-asset/jquery": "^3.5",
-        "middlewares/trailing-slash": "^2.0"
+        "middlewares/trailing-slash": "^2.0",
+        "npm-asset/jquery-datetimepicker": "^2.5",
+        "npm-asset/gasparesganga-jquery-loading-overlay": "^2.1"
     },
 	"extra": {
         "installer-types": ["npm-asset"],

@@ -5,9 +5,24 @@
 {% block content %}
   <div class="center-text">
     <canvas id="co2Chart"></canvas> 
-  </div> 
+  </div>
+
   <script> 
-    var co2Chart = createCo2chart("co2Chart"); 
-    co2chartUpdate("data/", co2Chart); 
+    var co2Chart = createCo2Chart("co2Chart");
+    co2ChartUpdate(co2Chart, "data/2020-09-01/2020-09-02/");
   </script> 
+
+  <form class="pure-form" onsubmit="co2ChartUpdateByPeriod(co2Chart, $('#from').val(), $('#to').val()); return false;">
+    <fieldset>
+      <legend>Period</legend>
+      <input type="text" id="from" placeholder="From"/>
+      <input type="text" id="to" placeholder="To"/>
+      <button type="submit" class="pure-button pure-button-primary">Update</button>
+    </fieldset>
+  </form>
+
+  <script type="text/javascript">
+    $('#from').datetimepicker({format:'Y-m-d H:i'});
+    $('#to').datetimepicker({format:'Y-m-d H:i'});
+  </script>
 {% endblock %}

@@ -1,4 +1,4 @@
-function createCo2chart(ctx) {
+function createCo2Chart(ctx) {
 	return new Chart(ctx, {
 		type: "line",
 		data: {
@@ -80,36 +80,55 @@ function mapCo2Data(data, key) {
 	);
 }
 
-function co2chartUpdate(url, chart) {
+function co2ChartUpdate(chart, url) {
+	$.LoadingOverlay("show");
+
 	$.getJSON(
 		url,
 		function (data) {
-			var sec = (new Date(data[data.length - 1]["time"]).getTime() - new Date(data[0]["time"]).getTime()) / 1000;
-
-			chart.options.scales.xAxes[0].time.unit = "minute";
-			chart.options.scales.xAxes[0].scaleLabel.labelString =
-				"Период: "
-				+ moment(data[0]["time"]).format("MMM D YYYY, HH:mm:ss")
-				+ " - "
-				+ moment(data[data.length - 1]["time"]).format("MMM D YYYY, HH:mm:ss");
+			var ppm = null;
+			var temp = null;
+			var label = "";
 			
-			if (sec / (3600 * 24 * 365) > 2) {
-				chart.options.scales.xAxes[0].time.unit = "year";
-			}
-			if (sec / (3600 * 24 * 30) > 2) {
-				chart.options.scales.xAxes[0].time.unit = "month";
-			}
-			if (sec / (3600 * 24) > 2) {
-				chart.options.scales.xAxes[0].time.unit = "day";
-			}
-			if (sec / 3600 > 2) {
-				chart.options.scales.xAxes[0].time.unit = "hour";
+			chart.options.scales.xAxes[0].time.unit = "minute";
+			label = "";
+
+			if (typeof data !== "undefined" && data.length > 0) {
+				var sec = (new Date(data[data.length - 1]["time"]).getTime() - new Date(data[0]["time"]).getTime()) / 1000;
+
+				label =
+					"Период: "
+					+ moment(data[0]["time"]).format("MMM D YYYY, HH:mm:ss")
+					+ " - "
+					+ moment(data[data.length - 1]["time"]).format("MMM D YYYY, HH:mm:ss");
+
+				if (sec / (3600 * 24 * 365) > 2) {
+					chart.options.scales.xAxes[0].time.unit = "year";
+				}
+				if (sec / (3600 * 24 * 30) > 2) {
+					chart.options.scales.xAxes[0].time.unit = "month";
+				}
+				if (sec / (3600 * 24) > 2) {
+					chart.options.scales.xAxes[0].time.unit = "day";
+				}
+				if (sec / 3600 > 2) {
+					chart.options.scales.xAxes[0].time.unit = "hour";
+				}
+				ppm = mapCo2Data(data, "ppm");
+				temp = mapCo2Data(data, "temp");
 			}
 
-			chart.data.datasets[0].data = mapCo2Data(data, "ppm");
-			chart.data.datasets[1].data = mapCo2Data(data, "temp");
 
+			chart.options.scales.xAxes[0].scaleLabel.labelString = label;
+			chart.data.datasets[0].data = ppm;
+			chart.data.datasets[1].data = temp;
+
+			$.LoadingOverlay("hide");
 			chart.update();
 		}
 	);
+}
+
+function co2ChartUpdateByPeriod(chart, from, to) {
+	co2ChartUpdate(chart, "data/" + from + "/" + to);
 }

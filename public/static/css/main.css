@@ -1,10 +1,3 @@
-textarea.params-list {
-    height: 200px;
-}
-textarea.log {
-    height: 500px;
-}
-
 .error-bg {
     background: #ffcccc;
 }
@@ -34,24 +27,4 @@ textarea.log {
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 5%;
-}
-
-.pagination {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    display: inline-block;
-}
-.pagination a {
-    font-size: 70%;
-    color: black;
-    float: left;
-    padding: 4px 8px;
-    text-decoration: none;
-}
-.pagination a.active {
-    background-color: #bbb;
-    color: white;
-}
-.pagination a:hover:not(.active) {
-    background-color: #eee;
 }
