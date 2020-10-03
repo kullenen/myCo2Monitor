@@ -9,15 +9,20 @@
 
   <script> 
     var co2Chart = createCo2Chart("co2Chart");
-    co2ChartUpdate(co2Chart, "data/2020-09-01/2020-09-02/");
+    co2ChartUpdate(co2Chart, "{{ dataUrl }}");
+
+    function co2SetFormAction(form, from, to) {
+        form.action = "/" + from + "/" + to;
+        return true;
+    }
   </script> 
 
-  <form class="pure-form" onsubmit="co2ChartUpdateByPeriod(co2Chart, $('#from').val(), $('#to').val()); return false;">
+  <form class="pure-form" method="get" onsubmit="return co2SetFormAction(this, $('#from').val(), $('#to').val());">
     <fieldset>
-      <legend>Period</legend>
-      <input type="text" id="from" placeholder="From"/>
-      <input type="text" id="to" placeholder="To"/>
-      <button type="submit" class="pure-button pure-button-primary">Update</button>
+      <legend>Период</legend>
+      <input type="text" id="from" placeholder="С" value="{{ from }}"/>
+      <input type="text" id="to" placeholder="По"  value="{{ to }}"/>
+      <button type="submit" class="pure-button pure-button-primary">Показать</button>
     </fieldset>
   </form>
 
