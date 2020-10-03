@@ -8,5 +8,7 @@ class Routes {
 
 		$app->get('/', HomeController::class)->setName('home');
 		$app->get('/data[/{from}/{to}]', DataController::class)->setName('data');
+
+		$app->redirect('/favicon.ico', '/static/i/favicon.ico');
 	}
 }
