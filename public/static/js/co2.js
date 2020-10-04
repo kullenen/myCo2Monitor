@@ -95,25 +95,25 @@ function co2ChartUpdate(chart, url) {
 
 			if (typeof data !== "undefined" && data.length > 0) {
 				var sec = (new Date(data[data.length - 1]["time"]).getTime() - new Date(data[0]["time"]).getTime()) / 1000;
+				var units = {
+					"hour": 3600,
+					"day": 3600 * 24,
+					"month": 3600 * 24 * 30,
+					"year": 3600 * 24 * 365
+				};
 
 				label =
 					"Период: "
-					+ moment(data[0]["time"]).format("MMM D YYYY, HH:mm:ss")
+					+ moment(data[0]["time"]).format("D MMM YYYY, HH:mm:ss")
 					+ " - "
-					+ moment(data[data.length - 1]["time"]).format("MMM D YYYY, HH:mm:ss");
+					+ moment(data[data.length - 1]["time"]).format("D MMM YYYY, HH:mm:ss");
 
-				if (sec / (3600 * 24 * 365) > 2) {
-					chart.options.scales.xAxes[0].time.unit = "year";
+				for (const [unit, divider] of Object.entries(units)) {
+					if (sec / divider > 1) {
+						chart.options.scales.xAxes[0].time.unit = unit;
+					}
 				}
-				if (sec / (3600 * 24 * 30) > 2) {
-					chart.options.scales.xAxes[0].time.unit = "month";
-				}
-				if (sec / (3600 * 24) > 2) {
-					chart.options.scales.xAxes[0].time.unit = "day";
-				}
-				if (sec / 3600 > 2) {
-					chart.options.scales.xAxes[0].time.unit = "hour";
-				}
+
 				ppm = mapCo2Data(data, "ppm");
 				temp = mapCo2Data(data, "temp");
 			}
@@ -127,8 +127,4 @@ function co2ChartUpdate(chart, url) {
 			chart.update();
 		}
 	);
-}
-
-function co2ChartUpdateByPeriod(chart, from, to) {
-	co2ChartUpdate(chart, "data/" + from + "/" + to);
 }
