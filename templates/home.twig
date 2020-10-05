@@ -3,13 +3,13 @@
 {% block content_title %}<h4>CO2</h4>{% endblock %}
 
 {% block content %}
-  <div class="center-text">
+  <div id="co2ChartContainer" class="center-text">
     <canvas id="co2Chart"></canvas> 
   </div>
 
-  <script> 
+  <script>
     var co2Chart = createCo2Chart("co2Chart");
-    co2ChartUpdate(co2Chart, "{{ dataUrl }}");
+    co2ChartUpdate(co2Chart, "{{ dataUrl }}", $("#co2ChartContainer"));
 
     function co2SetFormAction(form, from, to) {
         form.action = "/" + from + "/" + to;
