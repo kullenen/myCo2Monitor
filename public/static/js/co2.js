@@ -34,8 +34,9 @@ function createCo2Chart(ctx) {
 							unit: "minute",
 							displayFormats: {
 								second: "HH:mm:ss",
+								minute: "HH:mm",
 								hour: "HH:mm",
-								minute: "HH:mm"
+								day: "D MMM"
 							}
 						}
 					}
@@ -80,8 +81,8 @@ function mapCo2Data(data, key) {
 	);
 }
 
-function co2ChartUpdate(chart, url) {
-	$.LoadingOverlay("show");
+function co2ChartUpdate(chart, url, loaderContainer) {
+	loaderContainer.LoadingOverlay("show");
 
 	$.getJSON(
 		url,
@@ -123,7 +124,7 @@ function co2ChartUpdate(chart, url) {
 			chart.data.datasets[0].data = ppm;
 			chart.data.datasets[1].data = temp;
 
-			$.LoadingOverlay("hide");
+			loaderContainer.LoadingOverlay("hide");
 			chart.update();
 		}
 	);
