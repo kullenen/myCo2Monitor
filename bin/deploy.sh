@@ -8,8 +8,8 @@ else
 	composer='php composer.phar'
 fi
 
-echo "Starting install...\n"
+echo "Starting install..."
 
 $composer install
 
-echo "\nDone."
+echo "Done."
