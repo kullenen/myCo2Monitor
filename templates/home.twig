@@ -12,7 +12,7 @@
     co2ChartUpdate(co2Chart, "{{ dataUrl }}", $("#co2ChartContainer"));
 
     function co2SetFormAction(form, from, to) {
-        form.action = "/" + from + "/" + to;
+        form.action = "{{ base_path() }}/" + from + "/" + to;
         return true;
     }
   </script> 

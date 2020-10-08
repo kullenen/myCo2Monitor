@@ -4,6 +4,7 @@ return [
 	'settings' => [
 		'debug' => false,
 		'displayErrorDetails' => true,
+		'basePath' => '/co2',
 		'doctrine' => [
 			// if true, metadata caching is forcefully disabled
 			'dev_mode' => true,

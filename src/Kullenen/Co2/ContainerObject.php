@@ -1,10 +1,10 @@
 <?php
 
-namespace Kullenen\Co2\Controllers;
+namespace Kullenen\Co2;
 
 use Psr\Container\ContainerInterface;
 
-class Controller {
+class ContainerObject {
 	protected $container;
 
 	public function __construct(ContainerInterface $container) {

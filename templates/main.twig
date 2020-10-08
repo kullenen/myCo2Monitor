@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8"/>
 
-    <link rel="stylesheet" href="/static/assets/purecss/build/pure.css"/>
-    <link rel="stylesheet" href="/static/css/main.css"/>
-    <link rel="stylesheet" href="/static/assets/jquery-datetimepicker/jquery.datetimepicker.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', {'params': 'assets/purecss/build/pure.css'}) }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', {'params': 'css/main.css'}) }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', {'params': 'assets/jquery-datetimepicker/jquery.datetimepicker.css'}) }}"/>
 
-    <script src="/static/assets/moment/min/moment-with-locales.js"></script>
-    <script src="/static/assets/chart.js/dist/Chart.js"></script>
-    <script src="/static/assets/jquery/dist/jquery.min.js"></script>
-    <script src="/static/assets/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+    <script src="{{ url_for('static', {'params': 'assets/moment/min/moment-with-locales.js'}) }}"></script>
+    <script src="{{ url_for('static', {'params': 'assets/chart.js/dist/Chart.js'}) }}"></script>
+    <script src="{{ url_for('static', {'params': 'assets/jquery/dist/jquery.min.js'}) }}"></script>
+    <script src="{{ url_for('static', {'params': 'assets/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js'}) }}"></script>
 
-    <script src="/static/assets/gasparesganga-jquery-loading-overlay/dist/loadingoverlay.min.js"/></script>
+    <script src="{{ url_for('static', {'params': 'assets/gasparesganga-jquery-loading-overlay/dist/loadingoverlay.min.js'}) }}"/></script>
 
-    <script src="/static/js/co2.js"></script>
+    <script src="{{ url_for('static', {'params': 'js/co2.js'}) }}"></script>
 
     <title>CO2</title>
 </head>

@@ -2,7 +2,9 @@
 
 namespace Kullenen\Co2\Controllers;
 
-class PeriodController extends Controller {
+use Kullenen\Co2\ContainerObject;
+
+class PeriodController extends ContainerObject {
 	protected $from;
 	protected $to;
 
