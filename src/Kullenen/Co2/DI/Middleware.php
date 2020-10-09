@@ -4,8 +4,10 @@ namespace Kullenen\Co2\DI;
 
 class Middleware {
 	public static function register($container) {
-		$container->get('app')->add(new \Middlewares\TrailingSlash());
+		$app = $container->get('app');
 
-		$container->get('app')->addErrorMiddleware(false, true, true);
+		$app->add(new \Middlewares\TrailingSlash());
+
+		$app->addErrorMiddleware(false, true, true);
 	}
 }

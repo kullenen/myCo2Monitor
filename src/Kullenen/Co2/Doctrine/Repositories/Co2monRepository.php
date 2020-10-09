@@ -7,8 +7,16 @@ use Doctrine\ORM\Query\ResultSetMapping;
 use Kullenen\Co2\Doctrine\Entities\Co2mon;
 
 class Co2monRepository extends EntityRepository {
+	const DEFAULT_LOCATION = 1;
+
 	public function getForPeriod($from, $to, $maxResultsDensity = 100) {
+		$to = $this->getAlignedTo($to, self::DEFAULT_LOCATION);
+
 		$step = intdiv(($to - $from) ,$maxResultsDensity);
+
+		if ($step <= 0) {
+			return [];
+		}
 
 		$rsm = new ResultSetMapping;
 		$rsm->addEntityResult(Co2mon::class, 'c');
@@ -39,6 +47,25 @@ class Co2monRepository extends EntityRepository {
 			},
 			$query->getArrayResult()
 		);
+	}
+
+	private function getAlignedTo($to, $locationId) {
+		$qb = $this->createQueryBuilder('c');
+
+		$item = $qb->where('c.locationid = :locationId')
+				   ->andWhere('c.time <= :time')
+				   ->orderBy('c.time', 'DESC')
+					->setParameters(
+						[
+							'locationId' => $locationId,
+							'time' => (new \DateTime)->setTimeStamp($to)
+						]
+					)
+				   ->setMaxResults(1)
+				   ->getQuery()
+				   ->getOneOrNullResult();
+
+		return $item ? $item->getTime()->getTimestamp() : 0;
 	}
 }
 
